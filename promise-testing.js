@@ -495,7 +495,17 @@ function PromiseTester(){
         if(isWrappedFunction(promise)){
             return promise;
         }
-        return wrapPromise(promise);
+        var then = promise.then;
+        Object.defineProperty(promise,'then',{
+            enumerable:true,
+            configurable:true,
+            writeable:true,
+            get:function(){
+                return wrapPromise(promise).then;
+            }
+        });
+        return promise;
+        // return wrapPromise(promise);
     }
 
     this.wrap = wrap;
