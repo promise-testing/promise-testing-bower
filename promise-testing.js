@@ -491,6 +491,7 @@ function PromiseTester(){
 
     this.isWrapped = isWrappedFunction;
 
+
     function wrap(promise){
         if(isWrappedFunction(promise)){
             return promise;
