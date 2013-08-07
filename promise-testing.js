@@ -497,11 +497,24 @@ function PromiseTester(){
             return promise;
         }
         var then = promise.then;
+        var getting = false;
         Object.defineProperty(promise,'then',{
             enumerable:true,
             configurable:true,
             writeable:true,
             get:function(){
+                if(getting){
+                    return then;
+                }
+                else {
+                    getting = true;
+                    try{
+                        return wrapPromise(promise).then;
+                    }
+                    finally {
+                        getting = false;
+                    }
+                }
                 return wrapPromise(promise).then;
             }
         });
