@@ -508,14 +508,15 @@ function PromiseTester(){
                 }
                 else {
                     getting = true;
+                    var ret;
                     try{
-                        return wrapPromise(promise).then;
+                        ret = wrapPromise(promise).then;
                     }
                     finally {
                         getting = false;
                     }
+                    return ret;
                 }
-                return wrapPromise(promise).then;
             }
         });
         return promise;
