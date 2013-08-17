@@ -611,9 +611,7 @@ function PropertyListeners(){
 module.exports = PropertyListeners;
 
 });
-require.alias("promise-testing/index.js", "promise-testing/index.js");
-
-if (typeof exports == "object") {
+require.alias("promise-testing/index.js", "promise-testing/index.js");if (typeof exports == "object") {
   module.exports = require("promise-testing");
 } else if (typeof define == "function" && define.amd) {
   define(function(){ return require("promise-testing"); });
